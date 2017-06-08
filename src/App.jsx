@@ -12,21 +12,21 @@ const App = React.createClass({
                id : 1,
                name : "Event 1",
                price : 650,
-               content: "content 1",
+               content: "Some Content 1",
                isBought: false
             },
             {
                id : 2,
                name : "Event 2",
                price : 750,
-               content: "content 2",
+               content: "Some Content 2",
                isBought: false
             },
             {
                id : 3,
                name : "Event 3",
                price : 550,
-               content: "content 3",
+               content: "Some Content 3",
                isBought: false
             }],
             boughtEvent: '',
