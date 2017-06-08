@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.container
+{
+	margin-left: 50px;
+	margin-top: 40px;
+}
+.box1,.box2
+{
+	box-shadow: -2px 1px 10px rgba(0, 0, 0, 0.15) ;
+	padding: 20px;
+}
+.event-box
+{
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	padding: 15px;
+}
+.event-box:hover
+{
+	box-shadow: -2px 1px 10px rgba(0, 0, 0, 0.25) ;
+	border: none;
+}
+.counter
+{
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	display: inline-block;
+    padding: 6px 12px;
+}
+.content
+{
+	display: inline-block;
+}
+.price, .price-box
+{
+	float: right;
+}
+.price > h4
+{
+	opacity: 0.75;
+}
