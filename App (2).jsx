@@ -31,6 +31,14 @@ const App = React.createClass({
                content: "Some Content 3",
                isBought: false,
                count : 1
+            },
+            {
+               id : 4,
+               name : "Event 4",
+               price : 450,
+               content: "Some Content 4",
+               isBought: false,
+               count : 1
             }],
             bEvents: [],
             total:0
@@ -49,9 +57,9 @@ const App = React.createClass({
       let bEvents = this.state.bEvents;
       Events[index].isBought = false;
       for(let i=0;i<bEvents.length;i++){
-         if(bEvents[i].id==Events[index].id){
-         bEvents.splice(i, 1);
-         }
+      	if(bEvents[i].id==Events[index].id){
+	      bEvents.splice(i, 1);
+      	}
       }
       this.setState({Events:Events,bEvents:bEvents});
       setTimeout(()=>{this.updateTotal();},50);
@@ -69,29 +77,29 @@ const App = React.createClass({
       }
 
       for(let i=0;i<bEvents.length;i++){
-         if(bEvents[i].id==id){
-         bEvents.splice(i, 1);
-         this.setState({bEvents:bEvents});
-         }
+      	if(bEvents[i].id==id){
+	      bEvents.splice(i, 1);
+	      this.setState({bEvents:bEvents});
+      	}
       }
    },
    updateCount: function(id,count){
       let bEvents = this.state.bEvents;
       let total = 0;
-      for(let i=0;i<bEvents.length;i++){
-         if(bEvents[i].id==id){
-         bEvents[i].count = count;
-         this.setState({bEvents:bEvents});
-         }
-         total += bEvents[i].price * bEvents[i].count;
+   	for(let i=0;i<bEvents.length;i++){
+      	if(bEvents[i].id==id){
+	      bEvents[i].count = count;
+	      this.setState({bEvents:bEvents});
+      	}
+      	total += bEvents[i].price * bEvents[i].count;
       }
       this.setState({total:total});
    },
    updateTotal: function(){
    let total = 0;
    let bEvents = this.state.bEvents;
-      for(let i=0;i<bEvents.length;i++){
-         total += bEvents[i].price * bEvents[i].count;
+   	for(let i=0;i<bEvents.length;i++){
+      	total += bEvents[i].price * bEvents[i].count;
       }
       this.setState({total:total});
 
@@ -122,16 +130,16 @@ const App = React.createClass({
                <h3>Summary</h3>
                   <div className="box2">
                   
-                     {this.state.bEvents.length?
-                        <div>
-                           {bEvents}
-                           total:{this.state.total}
-                        </div>
-                        :
-                   <div>
-                   No Ticket chosen yet
-                   </div>                       
-                     }
+                  	{this.state.bEvents.length?
+                  		<div>
+	                  		{bEvents}
+                  			total:{this.state.total}
+                  		</div>
+                  		:
+			          <div>
+			          No Ticket chosen yet
+			          </div>                  		
+                  	}
                   </div>
                </div>
             </div>

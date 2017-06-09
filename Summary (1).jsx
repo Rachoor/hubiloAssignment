@@ -12,10 +12,7 @@ getInitialState: function() {
  minusCount: function(){
   if(this.props.val)
   {
-      if(this.state.count==1){
-        alert("At least one item required");
-      }
-      else {this.setState({count:--this.state.count});}
+      this.setState({count:--this.state.count});
       if(this.state.count==0){
         this.props.removeTicket(this.props.val.id);
       }
@@ -25,6 +22,10 @@ getInitialState: function() {
  plusCount: function(){
     this.setState({count:++this.state.count});
     this.props.updateCount(this.props.val.id,this.state.count)
+ },
+ total: function(){
+  var total = 0;
+    this.setState({total:this.props.val * + this.state.count})
  },
  render: function() {
       return (
