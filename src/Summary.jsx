@@ -7,11 +7,14 @@ getInitialState: function() {
   }
  },
  minusCount: function(){
-  if(this.state.count==1){
-    alert("At least one item required");
-  }
-  else{
-    this.setState({count:--this.state.count});
+  if(this.props.boughtEvent)
+  {
+      if(this.state.count==1){
+        alert("At least one item required");
+      }
+      else{
+        this.setState({count:--this.state.count});
+      }
   }
  },
  plusCount: function(){

@@ -8,6 +8,7 @@ const Event = React.createClass({
    buyClick: function(){
       if(this.props.val.isBought){
         this.props.cancelClick(this.props.index);
+        this.state.count = 1;
       }
       else{
         this.props.buyClick(this.props.index);

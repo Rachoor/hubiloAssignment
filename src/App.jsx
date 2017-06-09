@@ -13,30 +13,30 @@ const App = React.createClass({
                name : "Event 1",
                price : 650,
                content: "Some Content 1",
-               isBought: false
+               isBought: false,
+               count : 1
             },
             {
                id : 2,
                name : "Event 2",
                price : 750,
                content: "Some Content 2",
-               isBought: false
+               isBought: false,
+               count : 1
             },
             {
                id : 3,
                name : "Event 3",
                price : 550,
                content: "Some Content 3",
-               isBought: false
+               isBought: false,
+               count : 1
             }],
             boughtEvent: '',
     }
    },
    buyClick: function(index){
    let Events = this.state.Events;
-      for(let i=0;i<this.state.Events.length;i++){
-         Events[i].isBought = false;
-      }
       Events[index].isBought = true;
       this.setState({Events:Events,boughtEvent:Events[index]});
    },
