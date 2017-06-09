@@ -9,16 +9,16 @@ getInitialState: function() {
  minusCount: function(){
   if(this.props.boughtEvent)
   {
-      if(this.state.count==1){
+      if(this.props.boughtEvent.count==1){
         alert("At least one item required");
       }
       else{
-        this.setState({count:--this.state.count});
+        this.setState({count:--this.props.boughtEvent.count});
       }
   }
  },
  plusCount: function(){
-    this.setState({count:++this.state.count})
+    this.setState({count:++this.props.boughtEvent.count})
  },
  render: function() {
       return (
@@ -28,7 +28,7 @@ getInitialState: function() {
           <div>
           <h4>{this.props.boughtEvent.name}</h4>
             <button type="button" className="btn btn-default" onClick={this.minusCount}>-</button>
-            <div className="counter">{this.state.count}</div>
+            <div className="counter">{this.props.boughtEvent.count}</div>
             <button type="button" className="btn btn-default" onClick={this.plusCount}>+</button>
              X {this.props.boughtEvent.price}
             <p className="price"> total: {this.props.boughtEvent.price * +this.state.count}</p>

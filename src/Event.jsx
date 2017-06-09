@@ -3,12 +3,13 @@ import React, {Component} from 'react';
 const Event = React.createClass({
   getInitialState: function() {
     return {
+      count : 1
     }
    },
    buyClick: function(){
       if(this.props.val.isBought){
         this.props.cancelClick(this.props.index);
-        this.state.count = 1;
+        this.props.val.count =1;
       }
       else{
         this.props.buyClick(this.props.index);

@@ -32,7 +32,7 @@ const App = React.createClass({
                isBought: false,
                count : 1
             }],
-            boughtEvent: '',
+            boughtEvent: []
     }
    },
    buyClick: function(index){
