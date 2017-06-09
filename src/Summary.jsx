@@ -7,18 +7,22 @@ getInitialState: function() {
   }
  },
  minusCount: function(){
-  if(this.props.boughtEvent)
+  if(this.props.val)
   {
-      if(this.props.boughtEvent.count==1){
+      if(this.props.val.count==1){
         alert("At least one item required");
       }
       else{
-        this.setState({count:--this.props.boughtEvent.count});
+        this.setState({count:--this.props.val.count});
       }
   }
  },
  plusCount: function(){
-    this.setState({count:++this.props.boughtEvent.count})
+    this.setState({count:++this.props.val.count})
+ },
+ total: function(){
+  var total = 0;
+    this.setState({total:this.props.val * + this.state.count})
  },
  render: function() {
       return (
@@ -26,15 +30,15 @@ getInitialState: function() {
       <div className="my-component" >
       {this.props.boughtEvent ?
           <div>
-          <h4>{this.props.boughtEvent.name}</h4>
+          <h4>{this.props.val.name}</h4>
             <button type="button" className="btn btn-default" onClick={this.minusCount}>-</button>
-            <div className="counter">{this.props.boughtEvent.count}</div>
+            <div className="counter">{this.props.val.count}</div>
             <button type="button" className="btn btn-default" onClick={this.plusCount}>+</button>
-             X {this.props.boughtEvent.price}
-            <p className="price"> total: {this.props.boughtEvent.price * +this.state.count}</p>
+             X {this.props.val.price}
+            <p className="price"> total: {this.props.val.price * +this.state.count}</p>
             <hr/>
-            <h5> Subtotal:<p className="price">{this.props.boughtEvent.price * +this.state.count}</p></h5>
           </div>
+            
           :
           <div>
           No Ticket chosen yet

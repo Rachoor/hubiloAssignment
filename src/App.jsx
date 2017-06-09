@@ -31,27 +31,42 @@ const App = React.createClass({
                content: "Some Content 3",
                isBought: false,
                count : 1
+            },
+            {
+               id : 4,
+               name : "Event 4",
+               price : 450,
+               content: "Some Content 4",
+               isBought: false,
+               count : 1
             }],
-            boughtEvent: []
+            boughtEvent: [],
+            bEvents: []
     }
    },
    buyClick: function(index){
-   let Events = this.state.Events;
+      let Events = this.state.Events;
+      let bEvents = this.state.bEvents;
       Events[index].isBought = true;
-      this.setState({Events:Events,boughtEvent:Events[index]});
+      if(Events[index].isBought)
+         {bEvents[index] = Events[index];}
+      this.setState({Events:Events,boughtEvent:Events[index],bEvents:bEvents});
    },
    cancelClick: function(index){
       let Events = this.state.Events;
+      let bEvents = this.state.bEvents;
       Events[index].isBought = false;
-      this.setState({Events:Events,boughtEvent:''})
-
+      bEvents.splice(index, 1);
+      this.setState({Events:Events,boughtEvent:bEvents[index],bEvents:bEvents})
    },
    removeTicket: function(id){
       let Events = this.state.Events;
+      let bEvents = this.state.bEvents;
       for(let i=0;i<this.state.Events.length;i++){
          if(Events[i].id == id){
                Events[i].isBought = false;
-               this.setState({Events:Events,boughtEvent:''});
+               bEvents.splice(i, 1);
+               this.setState({Events:Events,boughtEvent:'',bEvents:bEvents});
          }
       }
    },
@@ -62,6 +77,12 @@ const App = React.createClass({
             <Event key={index} index={index} val={val} buyClick={this.buyClick} cancelClick={this.cancelClick}/>
          )
       }.bind(this));
+      var bEvents = this.state.bEvents.map(function(val,index) {
+         return(
+            <Summary key={index} index={index} val={val} boughtEvent={this.state.boughtEvent} removeTicket={this.removeTicket}/>
+         )
+      }.bind(this));
+      console.log(bEvents);
       return (
          
          <div className="container">
@@ -75,7 +96,7 @@ const App = React.createClass({
                <div className="col-sm-4">
                <h3>Summary</h3>
                   <div className="box2">
-                  <Summary boughtEvent={this.state.boughtEvent} removeTicket={this.removeTicket}/>
+                  {bEvents}
                   </div>
                </div>
             </div>
