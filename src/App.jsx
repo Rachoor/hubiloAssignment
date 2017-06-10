@@ -41,6 +41,7 @@ const App = React.createClass({
       let bEvents = this.state.bEvents;
       Events[index].isBought = true;
       bEvents.push(Events[index]);
+      bEvents[index].count = 1;
       this.setState({Events:Events,bEvents:bEvents});
       setTimeout(()=>{this.updateTotal();},50);
    },
@@ -54,8 +55,7 @@ const App = React.createClass({
          }
       }
       this.setState({Events:Events,bEvents:bEvents});
-      setTimeout(()=>{this.updateTotal();},50);
-      
+      setTimeout(()=>{this.updateTotal();},50);   
    },
    removeTicket: function(id){
       let Events = this.state.Events;
@@ -67,7 +67,6 @@ const App = React.createClass({
                this.setState({Events:Events});
          }
       }
-
       for(let i=0;i<bEvents.length;i++){
          if(bEvents[i].id==id){
          bEvents.splice(i, 1);
@@ -97,7 +96,6 @@ const App = React.createClass({
 
    },
  render: function() {
-
       var Events = this.state.Events.map(function(val,index) {
          return(
             <Event key={index} index={index} val={val} buyClick={this.buyClick} cancelClick={this.cancelClick}/>
